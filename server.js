@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const colors = require('colors');
+const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 
@@ -14,6 +15,7 @@ connectDB();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
